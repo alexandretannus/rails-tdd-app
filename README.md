@@ -1,9 +1,18 @@
 # Application Info
 
-This app was developed following the instructions of the course *TDD com Rails, RSpec e Capybara*, available at Udemy
+Esta aplicação foi desenvolvida seguindo as instruções do curso *TDD com Rails, RSpec e Capybara*, disponível na Udemy
 
-## Ruby version
+## Versão do Ruby
 2.7.1
 
-## Rails Version
+## Versão do Rails
 7.0.4
+
+## Configurações  
+### Banco de dados
+
+    rails db:create:all
+
+
+### RSpec 
+    bundle exec spring binstub rspec
