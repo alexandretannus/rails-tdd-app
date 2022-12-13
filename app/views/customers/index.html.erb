@@ -1,5 +1,8 @@
 <h1>Lista de Clientes</h1>
 
+<% if flash[:notice] %>
+    <p> <%= flash[:notice] %> </p>
+<% end %>
 <ul>
     <li> <%= link_to 'Novo Cliente', new_customer_path %> </li>
 </ul>

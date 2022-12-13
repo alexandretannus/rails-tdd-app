@@ -1,1 +1,24 @@
 <h1>Novo Cliente</h1>
+
+<%= form_with(model: @customer) do |f| %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+
+	<%= f.label :phone %>
+	<%= f.text_field :phone %>
+
+	<%= f.label :avatar %>
+	<%= f.file_field :avatar %>
+
+	<%= f.label :smoker %>
+	<% { 'S': 'Sim', 'N': 'Não'}.each do |key, value|  %>
+		<%= f.radio_button :smoker, key %> <%= value %>
+	<% end %>
+
+	<%= f.submit 'Criar Cliente' %>
+
+<% end %>
