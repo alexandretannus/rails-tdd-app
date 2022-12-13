@@ -14,11 +14,4 @@
         avatar: Foto do Perfil
         created_at: Criado em
         updated_at: Atualizado em
-    errors:
-      models: 
-        customer: 
-          attributes:
-            name: 
-              blank: Nome não pode ficar em branco
-            email: 
-              blank: Email não pode ficar em branco
+
