@@ -1,5 +1,13 @@
 <h1>Novo Cliente</h1>
 
+<% if @customer.errors.any? %>
+	<ul>
+		<% @customer.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
+
 <%= form_with(model: @customer) do |f| %>
 
 	<%= f.label :name %>

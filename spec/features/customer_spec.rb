@@ -21,7 +21,7 @@ RSpec.feature "Customers", type: :feature do
     expect(page).to have_content('Novo Cliente')
   end
 
-  scenario 'Verifica formulário de novo cliente' do
+  scenario 'Cadastra cliente com sucesso' do
     visit(new_customer_path)
 
     customer_name = Faker::Name.name
@@ -36,5 +36,13 @@ RSpec.feature "Customers", type: :feature do
 
     expect(page).to have_content('Cliente cadastrado com sucesso')
     expect(Customer.last.name).to eq(customer_name)
+  end
+
+  scenario 'Falha de cadastro ' do
+    visit(new_customer_path)
+
+    click_on('Criar Cliente')
+
+    expect(page).to have_content('não pode ficar em branco')
   end
 end
