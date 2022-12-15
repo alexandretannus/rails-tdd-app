@@ -13,6 +13,16 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new app, browser: :chrome,
+ options:
+ Selenium::WebDriver::Chrome::Options.new(args:
+ %w[headless disable-gpu disable-popup-blocking])
+end
+ 
+Capybara.javascript_driver = :chrome
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

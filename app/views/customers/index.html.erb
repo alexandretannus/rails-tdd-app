@@ -5,11 +5,31 @@
 <% end %>
 
 
-<ul>
-    <% @customers.each do |customer| %>
-        <li> <%= customer.name %> </li>
-    <% end %>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @customers.each do |customer| %>
+            <tr>
+                <td> <%= customer.name %> </td>
+                <td> <%= customer.email %> </td>
+                <td> <%= link_to "Mostrar", customer_path(customer) %> </td>
+                <td> <%= link_to "Editar", edit_customer_path(customer) %> </td>
+                <td> <%= link_to "Excluir", customer, data: {
+                        "turbo-confirm": 'Deseja realmente excluir?',
+                        "turbo-method": :delete
+                    } %> </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
 
 <ul>
     <li> <%= link_to 'Novo Cliente', new_customer_path %> </li>

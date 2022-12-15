@@ -100,7 +100,6 @@ RSpec.feature "Customers", type: :feature do
 
     visit(edit_customer_path(customer.id))
 
-
     fill_in('customer_name', with: new_name)
 
     click_on('Atualizar Cliente')
@@ -110,4 +109,59 @@ RSpec.feature "Customers", type: :feature do
     expect(page).to have_content(customer.email)
     expect(page).to have_content(customer.phone)
   end
+
+  scenario 'Clica no link mostrar' do
+    customer = Customer.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.phone_number,
+      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
+      smoker: ['S', 'N'].sample
+    )
+
+    visit(customers_path)
+    find(:xpath, "/html/body/table/tbody/tr/td[3]/a").click
+    
+
+    expect(page).to have_content("Informação do Cliente")
+
+  end
+
+  scenario 'Clica no link editar' do
+    customer = Customer.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.phone_number,
+      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
+      smoker: ['S', 'N'].sample
+    )
+
+    visit(customers_path)
+    find(:xpath, "/html/body/table/tbody/tr/td[4]/a").click
+    
+
+    expect(page).to have_content("Edição do Cliente")
+
+  end
+
+  scenario 'Clica no link excluir', js:true do
+
+    customer = Customer.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.phone_number,
+      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
+      smoker: ['S', 'N'].sample
+    )
+
+    visit(customers_path)
+    find(:xpath, "/html/body/table/tbody/tr/td[5]/a").click
+    2.second
+    page.driver.browser.switch_to.alert.accept
+    
+
+    expect(page).to have_content("Cliente excluido com sucesso")
+
+  end
+
 end
