@@ -1,5 +1,7 @@
 <h1>Cliente</h1>
-
+<% if flash[:notice] %>
+    <p> <%= flash[:notice] %> </p>
+<% end %>
 <p>
     <strong>Nome</strong>
     <%= @customer.name %>
