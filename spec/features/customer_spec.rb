@@ -48,13 +48,7 @@ RSpec.feature "Customers", type: :feature do
 
 
   scenario 'Mostra um cliente ' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
-      smoker: ['S', 'N'].sample
-    )
+    customer = create(:customer)
 
     visit(customer_path(customer.id))
 
@@ -65,21 +59,9 @@ RSpec.feature "Customers", type: :feature do
 
 
   scenario 'Testando index' do
-    customer1 = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
-      smoker: ['S', 'N'].sample
-    )
+    customer1 = create(:customer)
 
-    customer2 = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
-      smoker: ['S', 'N'].sample
-    )
+    customer2 = create(:customer)
 
     visit(customers_path)
 
@@ -88,13 +70,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Mostra um cliente ' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
-      smoker: ['S', 'N'].sample
-    )
+    customer = create(:customer)
 
     new_name = Faker::Name.name
 
@@ -111,13 +87,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Clica no link mostrar' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
-      smoker: ['S', 'N'].sample
-    )
+    customer = create(:customer)
 
     visit(customers_path)
     find(:xpath, "/html/body/table/tbody/tr/td[3]/a").click
@@ -128,13 +98,7 @@ RSpec.feature "Customers", type: :feature do
   end
 
   scenario 'Clica no link editar' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
-      smoker: ['S', 'N'].sample
-    )
+    customer = create(:customer)
 
     visit(customers_path)
     find(:xpath, "/html/body/table/tbody/tr/td[4]/a").click
@@ -146,13 +110,7 @@ RSpec.feature "Customers", type: :feature do
 
   scenario 'Clica no link excluir', js:true do
 
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png",
-      smoker: ['S', 'N'].sample
-    )
+    customer = create(:customer)
 
     visit(customers_path)
     find(:xpath, "/html/body/table/tbody/tr/td[5]/a").click
